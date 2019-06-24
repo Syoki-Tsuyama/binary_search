@@ -3,12 +3,13 @@
 int a[100000];
 
 int binarySearch(int arr[], int target, int left, int right) {
-  if (left >= right) return right;
-
-  int mid = (right + left) / 2;
-  if (arr[mid] < target) return binarySearch(arr, target, mid+1, right);
-  else return binarySearch(arr, target, left, mid);
-  return 0;
+  int l = left;
+  int r = right;
+  for(int mid = (l+r)/2 ; l < r ; mid = (l + r) / 2) {
+    if (arr[mid] < target) l = mid + 1;
+    else r = mid;
+  }
+  return r;
 }
 
 int main (void) {

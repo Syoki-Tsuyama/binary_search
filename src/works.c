@@ -7,7 +7,7 @@ int A[100000];
 // int => bool の関数pが単調(p(x) >= p(x-1))のとき、p(x)==1 なる最小のxを調べる
 int binarySearch_P (int arr[], int (*p)(int), int left, int right) {
   if (left >= right) return right;
-  
+
   int mid = (left + right) / 2;
 
   if (p(mid)) return binarySearch_P(arr, p, left, mid);

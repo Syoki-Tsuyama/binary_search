@@ -7,7 +7,7 @@ int A[100000];
 // int => bool の関数pが単調(p(x) >= p(x-1))のとき、p(x)==1 なる最小のxを調べる
 int binarySearch_P (int arr[], int (*p)(int *,int,int), int left, int right) {
   if (left >= right) return right;
-  
+
   int mid = (left + right) / 2;
 
   if (p(arr,k,mid)) return binarySearch_P(arr, p, left, mid);
@@ -33,10 +33,10 @@ int canTakeOut(int arr[], int backetNum, int backetSize) {
 
 int main(){
   scanf("%d%d", &n, &k);
-  for(int i = 0; i < n; i++){ 
+  for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(A, canTakeOut, 0, A[n-1]));
+  printf("%d\n", binarySearch_P(A, canTakeOut, 1, A[n-1]));
 
   return 0;
 }

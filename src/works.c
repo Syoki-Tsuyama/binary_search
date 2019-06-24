@@ -6,12 +6,13 @@ int A[100000];
 
 // int => bool の関数pが単調(p(x) >= p(x-1))のとき、p(x)==1 なる最小のxを調べる
 int binarySearch_P (int arr[], int (*p)(int), int left, int right) {
-  if (left >= right) return right;
-
-  int mid = (left + right) / 2;
-
-  if (p(mid)) return binarySearch_P(arr, p, left, mid);
-  else return binarySearch_P(arr, p, mid + 1, right);
+  int l = left;
+  int r = right;
+  for(int mid = (l+r)/2 ; l < r ; mid = (l + r) / 2) {
+    if (p(mid)) r = mid;
+    else l = mid + 1;
+  }
+  return r;
 }
 
 // 仕事量がもっとも多い人の仕事量がmaxTaskである場合、k人に仕事を配分できるか調べる

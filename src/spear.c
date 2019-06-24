@@ -6,7 +6,7 @@ int A[100000];
 
 // 小数点以下を全て切り上げる割り算
 int Div(unsigned int x, unsigned int y) {
-  return x % y == 0 ? x / y : (x / y) + 1;
+  return (x + y - 1) / y;
 }
 
 // boolへの関数pが単調減少(p(x) <= p(x-1))のとき、p(x)==1 なる最大のxを調べる

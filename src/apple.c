@@ -17,16 +17,17 @@ int binarySearch_P (int arr[], int (*p)(int *,int,int), int left, int right) {
 
 // 小数点以下を全て切り上げる割り算
 int Div(unsigned int x, unsigned int y) {
-  if (x % y == 0) return x / y;
-  else return (x / y) + 1;
+  return (x + y - 1) / y;
 }
 
 // 全ての人がりんごを持ち帰れるか調べる。
 int canTakeOut(int arr[], int bucketNum, int bucketSize) {
+  int tmp = bucketNum;
+  if (bucketSize == 0) return 0;
   for (int i=0; i < n; i++) {
-    if (bucketNum < 0) return 0;
-    if (bucketSize == 0) return 0;
-    bucketNum - Div(arr[i], bucketSize);
+    tmp -= Div(arr[i], bucketSize);
+    if (tmp < 0) return 0;
+
   }
   return 1;
 }
@@ -45,6 +46,6 @@ int main(){
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(A, canTakeOut, 1, max(A, n)));
+  printf("%d\n", binarySearch_P(A, canTakeOut, 0, max(A, n)));
   return 0;
 }

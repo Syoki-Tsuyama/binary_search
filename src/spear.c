@@ -6,8 +6,7 @@ int A[100000];
 
 // 小数点以下を全て切り上げる割り算
 int Div(unsigned int x, unsigned int y) {
-  if (x % y == 0) return x / y;
-  else return (x / y) + 1;
+  return x % y == 0 ? x / y : (x / y) + 1;
 }
 
 // boolへの関数pが単調減少(p(x) <= p(x-1))のとき、p(x)==1 なる最大のxを調べる
@@ -31,12 +30,20 @@ int canMakeSpears(int len, int spearNum) {
   return 0;
 }
 
+// 配列の最大値を求める
+int max(int arr[], int n) {
+  int m = arr[0];
+  for(int i=1; i<n; i++) {
+    if (m < arr[i]) m = arr[i];
+  }
+  return m;
+}
 
 int main(){
   scanf("%d%d", &n, &k);
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(canMakeSpears, 1, A[n-1]));
+  printf("%d\n", binarySearch_P(canMakeSpears, 1, max(A, n)));
   return 0;
 }

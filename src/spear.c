@@ -11,11 +11,13 @@ int Div(unsigned int x, unsigned int y) {
 
 // boolへの関数pが単調減少(p(x) <= p(x-1))のとき、p(x)==1 なる最大のxを調べる
 int binarySearch_P (int (*p)(int,int), int left, int right) {
-  if (right <= left) return left;
-
-  int mid = Div(left+right , 2);
-  if (p(mid, k)) return binarySearch_P(p, mid, right);
-  else return binarySearch_P(p, left, mid - 1);
+  int l = left;
+  int r = right;
+  for(int mid = (l+r)/2 ; l < r ; mid = Div(l+r, 2)) {
+    if (p(mid, k)) l = mid;
+    else r = mid-1;
+  }
+  return l;
 }
 
 // 長さlenの槍をspearNum本作れるか調べる

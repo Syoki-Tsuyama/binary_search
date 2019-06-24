@@ -23,7 +23,6 @@ int binarySearch_P (int (*p)(int,int), int left, int right) {
 // 長さlenの槍をspearNum本作れるか調べる
 int canMakeSpears(int len, int spearNum) {
   if (len <= 0) return 0;
-
   int tmp = spearNum;
   for (int i=0; i < n; i++) {
     tmp -= A[i] / len;
@@ -46,6 +45,6 @@ int main(){
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(canMakeSpears, 1, max(A, n)));
+  printf("%d\n", binarySearch_P(canMakeSpears, 0, max(A, n)));
   return 0;
 }

@@ -22,11 +22,11 @@ int Div(unsigned int x, unsigned int y) {
 }
 
 // 全ての人がりんごを持ち帰れるか調べる。
-int canTakeOut(int arr[], int backetNum, int backetSize) {
+int canTakeOut(int arr[], int bucketNum, int bucketSize) {
   for (int i=0; i < n; i++) {
-    if (backetNum < 0) return 0;
-    if (backetSize == 0) return 0;
-    backetNum - Div(arr[i], backetSize);
+    if (bucketNum < 0) return 0;
+    if (bucketSize == 0) return 0;
+    bucketNum - Div(arr[i], bucketSize);
   }
   return 1;
 }

@@ -32,22 +32,22 @@ int canAssign(int maxTask) {
 }
 
 // 配列の要素の合計を求める
-int sum(int arr[], int n) {
-  int sum = 0;
-  for (int i=0; i < n; i++) {
-    sum += arr[i];
-  }
-  return sum;
-}
+// int sum(int arr[], int n) {
+//   int sum = 0;
+//   for (int i=0; i < n; i++) {
+//     sum += arr[i];
+//   }
+//   return sum;
+// }
 
 // 配列の最大値
-// int max (int arr[], int n) {
-//   int m = arr[0];
-//   for (int i = 0; i < n; i++) {
-//     if (m < arr[i]) m = arr[i];
-//     return m;
-//   }
-// }
+int max (int arr[], int n) {
+  int m = arr[0];
+  for (int i = 0; i < n; i++) {
+    if (m < arr[i]) m = arr[i];
+  }
+  return m;
+}
 
 int main(){
   int i, lb, ub;
@@ -59,9 +59,8 @@ int main(){
   printf("%d\n", binarySearch_P(
     A,
     canAssign,
-    A[n-1], /* max(A) でも良かったが、多少よい下限を取るためにわざわざO(n)の計算をさせるのもいかがなものかと思った */
-    sum(A, n)
+    max(A, n)-1,
+    (n+k-1)/k * max(A, n)
   ));
-
   return 0;
 }

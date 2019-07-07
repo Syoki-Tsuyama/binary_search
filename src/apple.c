@@ -32,6 +32,12 @@ int canTakeOut(int arr[], int bucketNum, int bucketSize) {
   return 1;
 }
 
+int sum(int A[], int n) {
+  int s = 0;
+  for (int i=0; i<n; i++) s += A[i];
+  return s;
+}
+
 // 配列の最大値を求める
 int max(int arr[], int n) {
   int m = arr[0];
@@ -46,6 +52,6 @@ int main(){
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(A, canTakeOut, 0, max(A, n)));
+  printf("%d\n", binarySearch_P(A, canTakeOut, (sum(A, n)-1)/k, ((max(A, n)+k)/n-1)/(k/n)));
   return 0;
 }

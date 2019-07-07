@@ -32,12 +32,18 @@ int canMakeSpears(int len, int spearNum) {
 }
 
 // 配列の最大値を求める
-int max(int arr[], int n) {
+int min(int arr[], int n) {
   int m = arr[0];
   for(int i=1; i<n; i++) {
-    if (m < arr[i]) m = arr[i];
+    if (m > arr[i]) m = arr[i];
   }
   return m;
+}
+
+long int sum(int A[], int n) {
+  int s = 0;
+  for (int i=0; i<n; i++) s += A[i];
+  return s;
 }
 
 int main(){
@@ -45,6 +51,6 @@ int main(){
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(canMakeSpears, 0, max(A, n)));
+  printf("%d\n", binarySearch_P(canMakeSpears, min(A, n)/((k+n-1)/n), (sum(A, n)-1)/k));
   return 0;
 }

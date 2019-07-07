@@ -13,7 +13,9 @@ int Div(unsigned int x, unsigned int y) {
 int binarySearch_P (int (*p)(int,int), int left, int right) {
   int l = left;
   int r = right;
-  for(int mid = (l+r)/2 ; l < r ; mid = Div(l+r, 2)) {
+  int mid;
+  while(l < r) {
+    mid = Div(l+r, 2);
     if (p(mid, k)) l = mid;
     else r = mid-1;
   }
@@ -51,6 +53,6 @@ int main(){
   for(int i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  printf("%d\n", binarySearch_P(canMakeSpears, min(A, n)/((k+n-1)/n), (sum(A, n)-1)/k));
+  printf("%d\n", binarySearch_P(canMakeSpears, min(A, n)/Div(k, n), (sum(A, n)-1)/k));
   return 0;
 }
